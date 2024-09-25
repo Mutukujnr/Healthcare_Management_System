@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.healthcare.dtos.PatientDTO;
 import com.healthcare.models.Patient;
 import com.healthcare.services.PatientService;
 
@@ -57,13 +58,13 @@ public class PatientController {
 	}
 	
 	@PostMapping("/addPatient")
-	public Patient  addPatient(@RequestBody Patient patient) {
+	public Patient  addPatient(@RequestBody PatientDTO patient) {
 		
 		return patientService.addPatient(patient);
 	}
 	
-	@PutMapping("/updatePatient")
-	public ResponseEntity<Patient>  updatePatient(@PathVariable(value = "patient_id") Long patient_id,@RequestBody Patient patient) {
+	@PutMapping("/updatePatient/{patient_id}")
+	public ResponseEntity<Patient>  updatePatient(@PathVariable(value = "patient_id") Long patient_id,@RequestBody PatientDTO patient) {
 		
 		try {
 		Patient updatedPatient =  patientService.updatePatient(patient_id, patient);

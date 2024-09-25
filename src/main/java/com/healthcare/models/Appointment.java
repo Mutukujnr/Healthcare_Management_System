@@ -37,4 +37,59 @@ public class Appointment {
 
 	    @OneToOne(mappedBy = "appointment", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	    private Prescription prescription;
+
+		public Appointment() {
+			super();
+		}
+
+		public Appointment(Date appointmentDate, Patient patient, Doctor doctor, Prescription prescription) {
+			super();
+			this.appointmentDate = appointmentDate;
+			this.patient = patient;
+			this.doctor = doctor;
+			this.prescription = prescription;
+		}
+
+		public Long getAppointment_id() {
+			return appointment_id;
+		}
+
+		public void setAppointment_id(Long appointment_id) {
+			this.appointment_id = appointment_id;
+		}
+
+		public Date getAppointmentDate() {
+			return appointmentDate;
+		}
+
+		public void setAppointmentDate(Date appointmentDate) {
+			this.appointmentDate = appointmentDate;
+		}
+
+		public Patient getPatient() {
+			return patient;
+		}
+
+		public void setPatient(Patient patient) {
+			this.patient = patient;
+		}
+
+		public Doctor getDoctor() {
+			return doctor;
+		}
+
+		public void setDoctor(Doctor doctor) {
+			this.doctor = doctor;
+		}
+
+		public Prescription getPrescription() {
+			return prescription;
+		}
+
+		public void setPrescription(Prescription prescription) {
+			this.prescription = prescription;
+		}
+	    
+	    
+	    
 }

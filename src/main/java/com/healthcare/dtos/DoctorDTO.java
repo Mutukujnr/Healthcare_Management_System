@@ -1,42 +1,24 @@
-package com.healthcare.models;
+package com.healthcare.dtos;
 
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.healthcare.models.Appointment;
+import com.healthcare.models.Prescription;
 
-@Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class Doctor {
-
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long doctor_id;
+public class DoctorDTO {
     private String name;
     private String specialization;
     private String email;
 
-    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    
     private List<Appointment> appointments;
 
-    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+   
     private List<Prescription> prescriptions;
 
-	public Doctor() {
-		super();
-	}
+    public DoctorDTO() {}
 
-	public Doctor(String name, String specialization, String email, List<Appointment> appointments,
+	public DoctorDTO(String name, String specialization, String email, List<Appointment> appointments,
 			List<Prescription> prescriptions) {
 		super();
 		this.name = name;
@@ -44,14 +26,6 @@ public class Doctor {
 		this.email = email;
 		this.appointments = appointments;
 		this.prescriptions = prescriptions;
-	}
-
-	public Long getDoctor_id() {
-		return doctor_id;
-	}
-
-	public void setDoctor_id(Long doctor_id) {
-		this.doctor_id = doctor_id;
 	}
 
 	public String getName() {

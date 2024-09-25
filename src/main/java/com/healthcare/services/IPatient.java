@@ -1,8 +1,8 @@
 package com.healthcare.services;
 
 import java.util.List;
-import java.util.Optional;
 
+import com.healthcare.dtos.PatientDTO;
 import com.healthcare.models.Patient;
 
 public interface IPatient{
@@ -13,9 +13,9 @@ public interface IPatient{
 	
 	Patient findByName(String name);
 	
-	Patient addPatient(Patient patient);
+	Patient addPatient(PatientDTO patientDTO);
 	
-	Patient updatePatient(Long id, Patient patient);
+	Patient updatePatient(Long id, PatientDTO patientDTO);
 	
 	void deletePatient(Long id);
 }

@@ -1,5 +1,6 @@
 package com.healthcare.models;
 
+import java.sql.Date;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
@@ -23,7 +24,7 @@ public class MedicalRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long record_id;
     private String diagnosis;
-    private LocalDateTime recordDate;
+    private Date recordDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "patient_id")
@@ -32,4 +33,61 @@ public class MedicalRecord {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "doctor_id")
     private Doctor doctor;
+
+	public MedicalRecord() {
+		super();
+	}
+
+	public MedicalRecord(String diagnosis, Date recordDate, Patient patient, Doctor doctor) {
+		super();
+		this.diagnosis = diagnosis;
+		this.recordDate = recordDate;
+		this.patient = patient;
+		this.doctor = doctor;
+	}
+
+	public Long getRecord_id() {
+		return record_id;
+	}
+
+	public void setRecord_id(Long record_id) {
+		this.record_id = record_id;
+	}
+
+	public String getDiagnosis() {
+		return diagnosis;
+	}
+
+	public void setDiagnosis(String diagnosis) {
+		this.diagnosis = diagnosis;
+	}
+
+	public Date getRecordDate() {
+		return recordDate;
+	}
+
+	public void setRecordDate(Date recordDate) {
+		this.recordDate = recordDate;
+	}
+
+	public Patient getPatient() {
+		return patient;
+	}
+
+	public void setPatient(Patient patient) {
+		this.patient = patient;
+	}
+
+	public Doctor getDoctor() {
+		return doctor;
+	}
+
+	public void setDoctor(Doctor doctor) {
+		this.doctor = doctor;
+	}
+    
+    
+    
 }
+
+

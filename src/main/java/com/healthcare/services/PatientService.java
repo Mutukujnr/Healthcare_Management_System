@@ -1,11 +1,11 @@
 package com.healthcare.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.healthcare.dtos.PatientDTO;
 import com.healthcare.models.Patient;
 import com.healthcare.repositories.PatientRepository;
 
@@ -34,24 +34,24 @@ public class PatientService implements IPatient{
 	}
 
 	@Override
-	public Patient addPatient(Patient patient) {
+	public Patient addPatient(PatientDTO patientDTO) {
 		
-		Patient newPatient = new Patient(patient.getName(),patient.getEmail(),patient.getPhoneNumber(),patient.getAppointments(),patient.getMedicalRecords());
+		Patient newPatient = new Patient(patientDTO.getName(),patientDTO.getEmail(),patientDTO.getPhoneNumber(),patientDTO.getAppointments(),patientDTO.getMedicalRecords());
 		
 		return patientRepository.save(newPatient);
 	}
 
 	@Override
-	public Patient updatePatient(Long id, Patient patient) {
+	public Patient updatePatient(Long id, PatientDTO patientDTO) {
 		
 		Patient getPatient = null;
 		getPatient = patientRepository.findById(id).get();
 		
 		if(getPatient != null) {
 			
-			getPatient.setName(patient.getName());
-			getPatient.setEmail(patient.getEmail());
-			getPatient.setPhoneNumber(patient.getPhoneNumber());
+			getPatient.setName(patientDTO.getName());
+			getPatient.setEmail(patientDTO.getEmail());
+			getPatient.setPhoneNumber(patientDTO.getPhoneNumber());
 		}
 		
 		return patientRepository.save(getPatient);

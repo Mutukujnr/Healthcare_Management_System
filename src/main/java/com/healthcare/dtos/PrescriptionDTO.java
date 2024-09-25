@@ -1,10 +1,10 @@
-package com.healthcare.models;
+package com.healthcare.dtos;
+
+import com.healthcare.models.Appointment;
+import com.healthcare.models.Doctor;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
@@ -16,27 +16,24 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Prescription {
+public class PrescriptionDTO {
 
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	
     private Long prescription_id;
     private String medicine;
     private String dosage;
 
-    @OneToOne
-    @JoinColumn(name = "appointment_id")
+   
     private Appointment appointment;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "doctor_id")
+   
     private Doctor doctor;
 
-	public Prescription() {
+	public PrescriptionDTO() {
 		super();
 	}
 
-	public Prescription(String medicine, String dosage, Appointment appointment, Doctor doctor) {
+	public PrescriptionDTO(String medicine, String dosage, Appointment appointment, Doctor doctor) {
 		super();
 		this.medicine = medicine;
 		this.dosage = dosage;
