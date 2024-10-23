@@ -1,5 +1,7 @@
 package com.healthcare.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -47,6 +49,21 @@ public class AppointmentService implements IAppointment{
 	public void deleteAppointment(Long id) {
 		appointmentRepository.deleteById(id);
 		
+	}
+
+
+
+	@Override
+	public List<Appointment> allAppointments() {
+		
+		return appointmentRepository.findAll();
+	}
+
+
+
+	public Appointment findByName(String name) {
+		
+		return appointmentRepository.findByName(name);
 	}
 
 }

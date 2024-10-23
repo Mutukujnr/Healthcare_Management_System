@@ -15,9 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.healthcare.dtos.DoctorDTO;
-import com.healthcare.dtos.PatientDTO;
 import com.healthcare.models.Doctor;
-import com.healthcare.models.Patient;
 import com.healthcare.services.DoctorService;
 
 @RestController

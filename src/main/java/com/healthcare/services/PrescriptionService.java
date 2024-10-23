@@ -1,9 +1,12 @@
 package com.healthcare.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.healthcare.dtos.PrescriptionDTO;
+import com.healthcare.models.Doctor;
 import com.healthcare.models.Prescription;
 import com.healthcare.repositories.PrescriptionRepository;
 
@@ -46,6 +49,18 @@ public class PrescriptionService implements IPrescription{
 	public void deletePrescription(Long id) {
 		prescriptionRepository.deleteById(id);
 		
+	}
+
+	@Override
+	public List<Prescription> allPrescriptions() {
+		
+		return prescriptionRepository.findAll();
+	}
+
+	@Override
+	public Prescription findByName(String name) {
+		
+		return prescriptionRepository.findByName(name);
 	}
 
 }

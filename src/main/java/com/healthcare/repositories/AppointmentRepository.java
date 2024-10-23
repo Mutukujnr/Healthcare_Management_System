@@ -8,4 +8,6 @@ import com.healthcare.models.Appointment;
 @Repository
 public interface AppointmentRepository extends JpaRepository<Appointment, Long>{
 
+	Appointment findByName(String name);
+
 }

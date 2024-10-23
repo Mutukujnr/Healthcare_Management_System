@@ -8,4 +8,6 @@ import com.healthcare.models.MedicalRecord;
 @Repository
 public interface MedicalRecordRepository extends JpaRepository<MedicalRecord, Long>{
 
+	MedicalRecord findByName(String name);
+
 }

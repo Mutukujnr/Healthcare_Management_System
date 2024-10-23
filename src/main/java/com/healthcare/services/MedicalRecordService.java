@@ -1,5 +1,7 @@
 package com.healthcare.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -51,6 +53,17 @@ public class MedicalRecordService implements IMedicalRecord{
 		
 		medicalRecordRepository.deleteById(id);
 		
+	}
+
+	@Override
+	public List<MedicalRecord> allMedicalRecords() {
+	
+		return medicalRecordRepository.findAll();
+	}
+
+	public  MedicalRecord findByName(String name) {
+		
+		return medicalRecordRepository.findByName(name);
 	}
 	
 }
